@@ -30,15 +30,14 @@ describe('toParagraphHtml', () => {
 
 describe('mkdownToHtml', () => {
   test('string conversion', () => {
-    const content = `
-      # Sample Document
+    const content = `# Sample Document
 
 Hello!
 
 This is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment.`;
 
     const expected = `<h1>Sample Document</h1>
-    <p>Hello!</p>
+<p>Hello!</p>
 
 <p>This is sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment.</p>`;
     const actual = mkdownToHtml(content);
