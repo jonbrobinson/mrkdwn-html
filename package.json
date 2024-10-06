@@ -1,0 +1,39 @@
+{
+  "name": "mrkdwn-html",
+  "version": "1.0.0",
+  "description": "markdown to html converter",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev:compile": "npm run clean && tsc -w",
+    "dev:start": "node --watch dist/index.js",
+    "dev": "concurrently npm:dev:compile npm:dev:start",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonbrobinson/mrkdwn-html.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonbrobinson/mrkdwn-html/issues"
+  },
+  "homepage": "https://github.com/jonbrobinson/mrkdwn-html#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.4",
+    "eslint": "^9.11.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0",
+    "vitest": "^2.1.1"
+  },
+  "dependencies": {
+    "concurrently": "^9.0.1",
+    "express": "^4.21.0"
+  }
+}
