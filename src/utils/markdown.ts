@@ -13,29 +13,34 @@ const mkdownToHtml = (
   return markdown.trim();
 };
 
+const isTag = (line: string) => {
+  const tagRegex = /^<.*>.*<\/.*>$/;
+  return tagRegex.test(line.trim());
+};
+
 const toParagraphHtml = (
   content: string,
-  opitions: { addLineBreaks?: boolean } = {}
+  options: { addLineBreaks?: boolean } = {}
 ) => {
   const contenlines = content.split('\n');
   const lines = [];
 
   for (let i = 0; i < contenlines.length; i++) {
     let current = contenlines[i];
-    if (!!lines[lines.length - 1] && !!contenlines[i]) {
+    const previous = lines[lines.length - 1];
+    if (previous && !isTag(previous) && !!contenlines[i]) {
       current = lines.pop() || '';
-      const lineBreakTag = opitions.addLineBreaks ? '<br>' : ' ';
+      const lineBreakTag = options.addLineBreaks ? '<br>' : ' ';
       current += lineBreakTag + contenlines[i];
     }
 
     lines.push(current);
   }
 
-  const tagRegex = /^<.*>.*<\/.*>$/;
   const startWordRegex = /^[A-Za-z].*$/;
 
   const wrappedLines = lines.map((line) => {
-    if (!tagRegex.test(line.trim()) && startWordRegex.test(line.trim())) {
+    if (!isTag(line.trim()) && startWordRegex.test(line.trim())) {
       return `<p>${line.trim()}</p>`;
     }
 
