@@ -32,8 +32,37 @@ This application converts Markdown syntax to HTML. It supports headers, bold, it
 
 To simulate converting a .md file to html you can run the test and see sample output
 
-3. Run Test to see markdown Conversion
+1. Run Test to see markdown Conversion
 
    ```sh
    npm run test
    ```
+
+## Running the Application
+
+Running this application creates a simple api to convert markdown strings to html output.
+
+```sh
+npm run dev
+```
+
+## Example Request
+
+1. Reqest to see conversion of simple string
+
+```json
+{
+  "markdown": "# Sample Document\n\nHello!\n\nThis is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment."
+}
+```
+
+2. Reqest to see conversion of simple string with the option to add line breaks.
+
+```json
+{
+  "markdown": "# Sample Document\nHello!\nThis is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment.",
+  "options": {
+    "addLineBreaks": true
+  }
+}
+```
