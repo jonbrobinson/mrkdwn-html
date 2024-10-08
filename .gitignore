@@ -1,3 +1,6 @@
+#custom ignore
+sample*Output.txt
+
 # Logs
 logs
 *.log
